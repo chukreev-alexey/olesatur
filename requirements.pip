@@ -1,0 +1,5 @@
+django
+south
+django-mptt
+django-grappelli
+django-filebrowser
