@@ -64,7 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'f_heads.apps.pages.middleware.PageMiddleware',
+    'olesatur.apps.pages.middleware.PageMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -138,5 +138,5 @@ FILEBROWSER_VERSIONS = {
 
 }
 GRAPPELLI_ADMIN_TITLE = u'Панель администрирования сайта'
-GRAPPELLI_INDEX_DASHBOARD = 'f_heads.dashboard.CustomIndexDashboard'
+GRAPPELLI_INDEX_DASHBOARD = '%s.dashboard.CustomIndexDashboard' % PROJECT_NAME
 PAGINATOR_PER_PAGE = 20

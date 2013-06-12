@@ -3,21 +3,18 @@ from django import forms
 from django.db import models
 from django.contrib import admin
 from .models import Page, InfoBlock
-from f_heads.apps.treeadmin import TreeAdmin
+from olesatur.apps.treeadmin import TreeAdmin
 
 class PageAdmin(TreeAdmin):
     fieldsets = [
         (None, {
-            'fields': [('name','visible'), 'url', ('parent', 'redirect_to') ], 'classes': ['wide']
+            'fields': [('name','visible'), 'url', ('parent', 'redirect_to'), 'bgimage' ], 'classes': ['wide']
         }),
         (u'Содержимое страницы', {
             'fields': ['content'], 'classes': ['grp-collapse grp-closed']
         }),
-        (u'Стили', {
-            'fields': [('style', 'service_style'), 'styles'], 'classes': ['grp-collapse grp-closed']
-        }),
         (u'SEO', {
-            'fields': ['title', 'meta'], 'classes': ['grp-collapse grp-closed']
+            'fields': ['seo_title', 'seo_meta'], 'classes': ['grp-collapse grp-closed']
         }),
     ]
     tree_title_field = 'name'
@@ -32,7 +29,8 @@ class PageAdmin(TreeAdmin):
     class Media:
         js = [
             '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
-            '/static/pages/js/tinymce_setup.js',
+            '/static/core/tinymce_setup/content.js',
+            '/static/core/tinymce_setup/tinymce_setup.js',
         ]
 admin.site.register(Page, PageAdmin)
 
@@ -43,6 +41,7 @@ class InfoBlockAdmin(admin.ModelAdmin):
     class Media:
         js = [
             '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
-            '/static/pages/js/tinymce_infoblock_setup.js',
+            '/static/pages/tinymce_setup/html_content.js',
+            '/static/core/tinymce_setup/tinymce_setup.js',
         ]
 admin.site.register(InfoBlock, InfoBlockAdmin)

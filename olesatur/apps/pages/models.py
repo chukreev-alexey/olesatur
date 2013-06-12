@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 import random
+import pytils
 from django.db import models
 from django.core.cache import cache
 from django.core.validators import RegexValidator
 from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 
+from filebrowser.fields import FileBrowseField
 from mptt.models import MPTTModel
-
-from f_heads.apps.styles.models import PageStyle, ServiceStyle
 
 class InfoBlock(models.Model):
     title = models.CharField(u'Название', max_length=255)
@@ -42,8 +42,8 @@ class VisibleManager(models.Manager):
     
 class Page(MPTTModel):
     name = models.CharField(u'Страница', max_length=255)
-    title = models.CharField(u'Заголовок (title)', max_length=255, blank=True)
-    meta = models.TextField(u'Мета теги (meta)', blank=True, null=True,
+    seo_title = models.CharField(u'Заголовок (title)', max_length=255, blank=True)
+    seo_meta = models.TextField(u'Мета теги (meta)', blank=True, null=True,
         help_text=u'''В данное поле вводится не просто текст, а meta теги целиком.
         Например:<br />
         &lt;meta name="keywords" content="Ключевые слова" /&gt;<br />
@@ -59,51 +59,24 @@ class Page(MPTTModel):
             <br />2) contacts (является дочерней страницей страницы about) =>
             http://mysite.ru/about/contacts ''', blank=True, default=u'')
     content = models.TextField(u'Содержимое страницы', blank=True, null=True)
+    bgimage = FileBrowseField(u'Фоновая картинка', format='image', max_length=200,
+                            directory='bg/', blank=True, null=True)
     parent = models.ForeignKey('self', null=True, blank=True,
             related_name='children', verbose_name=u'Родительский элемент')
     redirect_to = models.ForeignKey('self', null=True, blank=True,
             related_name='redirected', verbose_name=u'Перенаправить на страницу')
-    style = models.ForeignKey(PageStyle, verbose_name=u'Стиль страницы',
-                              related_name='page', blank=True, null=True)
-    styles = models.ManyToManyField(PageStyle, verbose_name=u'Стили для рэндома',
-                                    related_name='pages', blank=True, null=True)
-    service_style = models.ForeignKey(ServiceStyle, verbose_name=u'Стиль услуги',
-                                      related_name='service', blank=True, null=True)
     visible = models.BooleanField(u'Показывать?', default=False)
     
     allobjects = models.Manager()
     objects = VisibleManager()
-    
-    @property
-    def is_service(self):
-        try:
-            return (
-                self.is_descendant_of(Page.objects.get(path='services')) \
-                or \
-                self.is_descendant_of(Page.objects.get(path='solutions'))
-            )
-        except Page.DoesNotExist:
-            return False
-    
-    @property
-    def get_style(self):
-        if self.style:
-            return self.style
-        if self.styles.count() > 0:
-            return random.choice(self.styles.all())
-        return random.choice(PageStyle.objects.all())
-    
-    @property
-    def get_service_style(self):
-        return self.service_style or random.choice(ServiceStyle.objects.all())
     
     def get_absolute_url(self):
         return u'/%s/' % self.path if self.path else '/'
     
     def save(self, *args, **kwargs):
         self.url = self.url.strip()
-        if not self.title:
-            self.title = self.name
+        if not self.seo_title:
+            self.seo_title = self.name
         super(Page, self).save(*args, **kwargs)
         if not self.url and self.parent:
             self.url = str(self.id)

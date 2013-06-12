@@ -1,11 +1,13 @@
 # coding: utf-8
 # vim: ai ts=4 sts=4 et sw=4
+import os
+
 #from django.utils.translation import ugettext_lazy as _
 from django.contrib import admin
-from django.conf.urls.defaults import *
+#from django.conf.urls.defaults import *
+from django.conf.urls import *
 from django.http import HttpResponse, HttpResponseBadRequest
 from django.shortcuts import  render_to_response, get_object_or_404
-import os
 from django.conf import settings
 from django.utils.encoding import force_unicode
 from django.utils import simplejson, translation

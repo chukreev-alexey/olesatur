@@ -1,0 +1,530 @@
+/* Helpers */
+.clear {
+    clear: both;
+}
+
+body {
+    background: #fff url("../img/bbb.png");
+    font: 14px/22px Arial, Tahoma, Verdana, sans-serif;
+    color: #262626;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    color: #35546e;
+    font-weight: bold;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+
+h2 {
+    color: #35546e;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #35546e;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+h4 {
+    color: #35546e;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 20px;
+}
+
+
+.wrapper {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.top {
+    margin-top: 20px;
+    padding: 20px 30px;
+    background: url("../img/top_bg.png");
+}
+
+.top-logo {
+    float: left;
+    padding-top: 15px;
+}
+
+.top-phone {
+    float: right;
+    color: #135c85;
+    font-size: 30px;
+    width: 280px;
+    line-height: 32px;
+}
+
+.top-info {
+    color: #135c85;
+    padding: 5px 0;
+}
+
+.top-menu {
+    height: 46px;
+    background: url("../img/menu_b.png");
+    -webkit-border-radius: 5px 5px 0 0;
+       -moz-border-radius: 5px 5px 0 0;
+            border-radius: 5px 5px 0 0;
+}
+
+.top-menu li {
+    float: left;
+    display: inline-block;
+}
+
+.top-menu li.vertical-separator {
+    background: url("../img/vertical_separator.png");
+    width: 2px;
+    height: 46px;
+}
+
+.top-menu li a {
+    display: block;
+    padding: 12px 33px;
+    color: #603900;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.content-block {
+    background: #fff;
+    padding: 20px;
+}
+
+.content-block {
+    margin-bottom: 15px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+
+.content-block:first-child {
+    -webkit-border-radius: 0 0 5px 5px;
+       -moz-border-radius: 0 0 5px 5px;
+            border-radius: 0 0 5px 5px;
+}
+
+.left-content {
+    float: left;
+    width: 30%
+}
+
+.right-content {
+    float: right;
+    width: 70%;
+}
+
+.right-content > * {
+    padding: 0 20px;
+}
+
+.left-menu {
+    background: #f1f4f6;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+
+.left-menu li a {
+    display: block;
+    padding: 6px 0 6px 30px;
+    font-size: 16px;
+    color: #495255;
+}
+
+.left-menu li.active {
+    background: #c8dbe8;
+}
+
+.left-menu li.active a {
+    background: url("../img/tick.png") 0 10px no-repeat;
+    color: #0d65a8;
+    font-weight: bold;
+}
+
+.left-menu li.horizontal-separator {
+    background: url("../img/horizontal_separator.png");
+    height: 2px;
+}
+
+.banner-block {
+    margin-top: 15px;
+}
+
+.special-offers li {
+    margin-bottom: 20px;
+}
+
+.special-title a {
+    color: #0d65a8;
+    font-weight: bold;
+}
+
+.country-list {
+    float: left;
+}
+
+.country-list li a {
+    padding: 5px 0 5px 30px;
+    background: url("../img/sign.png") 0 9px no-repeat;
+    color: #067db8;
+    border-bottom: 1px dashed #bfbfbf;
+    display: block;
+    width: 150px;
+}
+
+footer {
+    padding: 15px 0 15px 0;
+}
+
+.footer-partners {
+
+}
+
+.footer-partners .left-arrow {
+    float: left;
+    margin-right: 40px;
+    padding-top: 8px;
+}
+
+.footer-partners .right-arrow {
+    float: right;
+    margin-left: 40px;
+    padding-top: 8px;
+}
+
+.footer-partners .partner-list {
+    float: left;
+}
+
+.footer-partners .partner-list li {
+    vertical-align: middle;
+    display: table-cell;
+    padding-right: 30px;
+}
+
+.footer-info {
+    padding: 40px 15px 20px 15px;
+}
+
+.footer-info p {
+    width: 285px;
+    color: #644f33;
+    line-height: 18px;
+    font-size: 15px;
+}
+
+.footer-phone {
+    float: left;
+    color: #644f33;
+    font-size: 30px;
+    width: 280px;
+    line-height: 32px;
+    padding: 0px 0 20px 15px;
+}
+
+.breadcrumbs {
+    margin-bottom: 15px;
+}
+
+.breadcrumbs li {
+    display: inline-block;
+    margin-right: 7px;
+    font-style: italic;
+    font-size: 13px;
+}
+
+.breadcrumbs li a {
+    color: #808080;
+    text-decoration: underline;
+}
+
+.breadcrumbs li span {
+    color: #a8a8a8;
+}
+
+.return-button {
+    padding-left: 33px;
+    background: #e9e9e9 url("../img/arr.png") 10px 10px no-repeat;
+    display: block;
+    width: 61px;
+    color: #636363;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    margin-bottom: 30px;
+}
+
+.tour-list-item {
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #bfbfbf;
+}
+
+.tour-list-item-image {
+    float: left;
+    margin-right: 20px;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+}
+
+.tour-list-item-info {
+    float: left;
+    width: 740px;
+}
+
+.tour-list-item-data {
+    background: #e7e7e7;
+    margin-bottom: 10px;
+}
+
+.tour-list-item-data li {
+    display: inline-block;
+    padding: 14px 10px;
+    float: left;
+}
+
+.tour-list-item-data li span {
+    font-weight: bold;
+}
+
+.tour-list-item-data li.vertical-separator {
+    background: url("../img/sep.png");
+    padding: 0;
+    width: 2px;
+    height: 40px;
+}
+
+.tour-list-item-title {
+    color: #000;
+    font-weight: bold;
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.tour-list-item-description {
+    margin-bottom: 10px;
+    line-height: 18px;
+}
+
+.send-order {
+    display: block;
+    background: #f9a810;
+    padding: 10px 24px;
+    font-weight: bold;
+    color: #813f04;
+    float: left;
+    margin-right: 10px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+
+.tour-list-info-price {
+    float: left;
+    color: #096fd7;
+    font-weight: bold;
+    font-size: 28px;
+    padding-top: 10px;
+}
+
+.tour-list-info-price span {
+    font-size: 18px;
+}
+
+.paginator {
+    background-color: #e7e7e7;
+    padding: 15px 0;
+    margin-bottom: 15px;
+}
+
+.paginator .first {
+    float: left;
+    width: 13%;
+}
+
+.paginator .first a {
+    margin-left: 30px;
+}
+
+.paginator .last {
+    float: right;
+    width: 13%;
+}
+
+.paginator .last a {
+    margin-right: 30px;
+}
+
+.paginator .center {
+    float: left;
+    text-align: center;
+    width: 74%;
+}
+
+.paginator ul {
+    display: inline-block;
+}
+
+.paginator ul li {
+    display: inline-block;
+    float: left;
+}
+
+.paginator ul li a {
+    display: block;
+    padding: 0 8px;
+}
+
+.paginator ul li.active {
+    background-color: #cacaca;
+}
+
+.paginator ul li.active a {
+    color: #fff;
+}
+
+.paginator a {
+    color: #848484;
+    font-size: 13px;
+}
+
+table {
+    width: 100%;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    border: 1px solid #bebebe;
+    text-align: center;
+    color: #555555;
+}
+
+table thead {
+    background-color: #e7ebee;
+    font-weight: bold;
+    color: #333a44;
+}
+
+table tr {
+    border-top: 1px solid #bebebe;
+    border-bottom: 1px solid #bebebe;
+}
+
+table td {
+    padding: 5px 0;
+}
+
+.popup-shadow {
+    background: url("../img/shadow.png");
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.popup-outer {
+    position: fixed;
+    left: 50%;
+}
+
+.popup {
+    position: relative;
+    left: -50%;
+    background: #fff;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+
+}
+
+.popup-inner {
+    border: 1px solid #bfbfbf;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    padding: 20px 30px;
+    width: 405px;
+}
+
+.popup-title {
+    color: #35546e;
+    font-size: 35px;
+    margin-bottom: 30px;
+}
+
+.popup-text {
+    line-height: 19px;
+    font-size: 13px;
+    margin-bottom: 30px;1
+}
+
+form .form_list {
+    margin-bottom: 30px;
+}
+
+form .form_list li input[type="text"],
+form .form_list li input[type="textarea"] {
+    width: 94%;
+    border: 2px solid #35546e;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    margin: 0;
+    padding: 13px 10px;
+    outline: none;
+    font-style: italic;
+}
+
+form .form_list li.error input[type="text"],
+form .form_list li.error input[type="textarea"] {
+    border: 2px solid #e24000;
+    color: #e24000;
+}
+
+.form_error {
+    color: #e24000;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+
+form button {
+    color: #fff;
+    background: #00a0eb;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 70px;
+    cursor: pointer;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.popup-inner .button,
+.popup-inner .popup-form-text {
+    text-align: center;
+}
+
+.popup-inner .popup-form-text {
+    margin: 5px 0;
+}

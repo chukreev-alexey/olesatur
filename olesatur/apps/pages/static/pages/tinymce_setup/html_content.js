@@ -1,0 +1,1 @@
+var tinymce_elements = "id_html_content";

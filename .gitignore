@@ -24,7 +24,7 @@ pip-log.txt
 *.mo
 
 # Project
-f_heads/settings.py
-f_heads/db/*
-f_heads/static/*
-f_heads/media/uploads/*
+olesatur/settings.py
+olesatur/db/*
+olesatur/static/*
+#olesatur/media/uploads/*

@@ -1,5 +1,8 @@
 django
+pytils
 south
+PIL
 django-mptt
 django-grappelli
 django-filebrowser
+

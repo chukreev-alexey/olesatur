@@ -12,12 +12,10 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 )
 
-urlpatterns += patterns('f_heads.apps.website.views',
-    url(r'^$', 'index', name='index'),
-    url(r'^(?P<kind>services|solutions)/$', 'service_list', name='service_list'),
-    url(r'^(?P<kind>services|solutions)/', 'service_detail', name='service_detail'),
+urlpatterns += patterns('',
+    url(r'^$', 'olesatur.apps.website.views.index'),
+    url(r'^direction/(?P<slug>[\w-]+)/$', 'olesatur.apps.website.views.direction_detail', name="direction_detail"),
 )
-
 
 # Serving media
 if settings.DEBUG:
@@ -26,5 +24,5 @@ if settings.DEBUG:
     )
 
 urlpatterns += patterns('',
-    url(r'^(?P<path>.*?)[/]?$', 'f_heads.apps.website.views.page', name="page"),
+    url(r'^(?P<path>.*?)[/]?$', 'olesatur.apps.website.views.page', name="page"),
 )

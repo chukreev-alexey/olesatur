@@ -1,21 +1,34 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render
-from f_heads.apps.pages.models import Page
-from f_heads.apps.website.models import News
+import math
+
+from django.http import HttpResponse 
+from django.shortcuts import render, get_object_or_404
+
+from .models import IndexBlock, Direction, Tour, Banner
+
+def get_bottom_block_context():
+    return {
+        'direction_list': Direction.objects.all(),
+        'direction_count': math.ceil(float(Tour.objects.filter(in_bottom_block=True).count()) / 3),
+        'tour_list': Tour.objects.filter(in_bottom_block=True)[:2],
+    }
 
 def index(request):
-    news_list = News.objects.all()[:2]
-    return render(request, 'website/index.html', {'news_list': news_list})
+    try:
+        banner = Banner.objects.all().order_by('?')[0]
+    except IndexError:
+        banner = None
+    context = {
+        'block_list': IndexBlock.objects.all(),
+        'banner': banner
+    }
+    context.update(get_bottom_block_context())
+    return render(request, 'website/index.html', context)
 
-def service_list(request, kind):
-    service_page = Page.objects.get(path=kind)
-    object_list = service_page.children.all()
-    return render(request, 'website/service_list.html', {
-        'object_list': object_list
-    })
-
-def service_detail(request, kind):
-    return render(request, 'website/service_detail.html')
+def direction_detail(request, slug):
+    request.page = get_object_or_404(Direction, slug=slug)
+    print request.page
+    return render(request, 'core/base.html')
 
 def page(request, path):
-    return render(request, 'website/page.html')
+    return render(request, 'core/base.html')

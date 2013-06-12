@@ -1,0 +1,81 @@
+{% load fb_versions %}<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>{% block title %}{% if request.page.title %}{{ request.page.title }} | {% endif  %}{{ request.TITLE }}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width">
+    {% block meta %}{{ request.page.meta|default:""|safe }}{% endblock %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="top">
+          <div class="top-logo">
+            <a href="/">
+              <img src="{{ STATIC_URL }}img/logo.png" alt="">
+            </a>
+          </div>
+          <div class="top-phone">
+            {{ request.infoblock.top_phone }}
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="top-info">
+          <p>{{ request.infoblock.under_logo }}</p>
+        </div>
+        <ul class="top-menu">
+          {% for item in request.top_menu %}
+            <li><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
+            {% if not forloop.last %}<li class="vertical-separator"></li>{% endif %}
+          {% endfor %}
+        </ul>
+        <div class="clear"></div>
+      </header>
+      <section>
+        <div class="content-block">
+          {% block top_content %}
+            
+            <h1>{% firstof request.page.name request.page.title %}</h1>
+            {{ request.page.content|default:""|safe }}
+          {% endblock %}
+        </div>
+        <div class="content-block">
+          {% block bottom_content %}
+          {% endblock %}
+        </div>
+      </section>
+      <footer>
+        <div class="footer-partners">
+          <h3>Партнеры</h3>
+          <div class="footer-partners">
+            <div class="left-arrow">
+              <a href="#"><img src="{{ STATIC_URL }}img/left.png" /></a>
+            </div>
+            <ul class="partner-list">
+              {% for item in request.partner_list %}
+                <li>
+                  {% if item.href %}<a target="_blank" href="{{ item.href }}">{% endif %}
+                  <img src="{% version item.image 'partner_list' %}" title="{{ item.title }}" alt="{{ item.title }}">
+                  {% if item.href %}</a>{% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+            <div class="right-arrow">
+              <a href="#"><img src="{{ STATIC_URL }}img/right.png" /></a>
+            </div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="footer-info">
+          <p>{{ request.infoblock.bottom_address }}</p>
+        </div>
+        <div class="footer-phone">
+          {{ request.infoblock.bottom_phone }}
+        </div>
+      </footer>
+    </div>
+  </body
+</html>

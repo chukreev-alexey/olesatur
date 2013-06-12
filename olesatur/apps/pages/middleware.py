@@ -4,8 +4,9 @@ from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from django.conf import settings
 
-from f_heads.core.utils import mptt_as_dict
-from f_heads.apps.pages.models import Page, InfoBlock
+from olesatur.core.utils import mptt_as_dict
+from olesatur.apps.website.models import Partner
+from .models import Page, InfoBlock
 
 
 class PageMiddleware(object):
@@ -53,6 +54,7 @@ class PageMiddleware(object):
         request = self.common_actions(request)
         
         request.top_menu = Page.objects.filter(level=1)
+        request.partner_list = Partner.objects.all()[:20]
         
         try:
             request.page = Page.objects.get(path=path)
@@ -63,11 +65,10 @@ class PageMiddleware(object):
                 #request.page = Page()
                 request.page  = None
         
-        none_level = request.top_menu.values_list('id', flat=True)
-        request.tree = mptt_as_dict(Page.objects.filter(level__gte=1), none_level=none_level)
+        #none_level = request.top_menu.values_list('id', flat=True)
+        #request.tree = mptt_as_dict(Page.objects.filter(level__gte=1), none_level=none_level)
         
         if request.page:
-            request.page_style = request.page.get_style
             request.ancestors = list(request.page.get_ancestors()) + [request.page]
             if request.page.redirect_to and not request.page.redirect_to.redirect_to:
                 return HttpResponseRedirect(request.page.redirect_to.get_absolute_url() or '/')

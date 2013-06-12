@@ -1,0 +1,34 @@
+{% extends "core/base.html" %}
+{% load fb_versions  %}
+{% block top_content %}
+  <div class="left-content">
+    <ul class="left-menu">
+      {% for item in block_list %}
+        <li {% if forloop.first %}class="active"{% endif %}>
+          <a href="#{{ item.id }}">{{ item.title }}</a>
+        </li>
+        {% if not forloop.last %}<li class="horizontal-separator"></li>{% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="right-content">
+    {% for item in block_list %}
+      <div class="index_block_container" width="650" {% if not forloop.first %}style="display: none;"{% endif %} id="index_block_{{ item.id }}">
+        {{ item.content|default:""|safe }}
+      </div>
+    {% endfor %}
+  </div>
+  <div class="clear"></div>
+  
+  <div class="banner-block">
+    {% if banner %}
+      {% if banner.href %}<a target="_blank" href="{{ banner.href }}">{% endif %}
+        <img src="{% version banner.image 'index_banner' %}" alt="{{ banner.name }}" />
+      {% if banner.href %}</a>{% endif %}
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block bottom_content %}
+  {% include "website/include/bottom_content.html" %}
+{% endblock %}

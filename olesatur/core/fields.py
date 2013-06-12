@@ -15,4 +15,4 @@ class MultiEmailField(models.CharField):
         for email in emails_list(value):
             validate_email(email)
 
-add_introspection_rules([], ["^common\.fields\.MultiEmailField"])
+add_introspection_rules([], ["^olesatur\.core\.fields\.MultiEmailField"])

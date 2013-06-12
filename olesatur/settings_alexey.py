@@ -64,7 +64,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'f_heads.apps.pages.middleware.PageMiddleware',
+    'olesatur.apps.pages.middleware.PageMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -97,9 +97,10 @@ INSTALLED_APPS = (
     'filebrowser',
     
     # Project apps
+    'olesatur.core',
     'olesatur.apps.pages',
     'olesatur.apps.treeadmin',
-    'olesatur.core',
+    'olesatur.apps.website',
     'django.contrib.admin',
 )
 
@@ -135,8 +136,13 @@ FILEBROWSER_VERSIONS = {
     'medium': {'verbose_name': 'Medium (4col )', 'width': 300, 'height': '', 'opts': ''},
     'big': {'verbose_name': 'Big (6 col)', 'width': 460, 'height': '', 'opts': ''},
     'large': {'verbose_name': 'Large (8 col)', 'width': 680, 'height': '', 'opts': ''},
+    
+    'partner_list': {'verbose_name': u'Список партнеров', 'width': '', 'height': 38, 'opts': ''},
+    'tour_list_bottom_block': {'verbose_name': u'Список туров в нижнеми блоке', 'width': 288, 'height': 288, 'opts': ''},
+    'index_banner': {'verbose_name': u'Баннеры на главной', 'width': 960, 'height': '', 'opts': ''},
+        
 
 }
-GRAPPELLI_ADMIN_TITLE = u'Панель администрирования сайта'
-GRAPPELLI_INDEX_DASHBOARD = 'f_heads.dashboard.CustomIndexDashboard'
+GRAPPELLI_ADMIN_TITLE = u'Туристическое агенство "Chrismary"'
+GRAPPELLI_INDEX_DASHBOARD = '%s.dashboard.CustomIndexDashboard' % PROJECT_NAME
 PAGINATOR_PER_PAGE = 20
