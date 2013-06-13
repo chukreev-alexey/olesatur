@@ -1,0 +1,56 @@
+{% extends "core/base.html" %}
+{% load fb_versions website_tags %}
+
+{% block top_content %}
+  {{ block.super }}
+  
+  <div class="tour-list">
+    {% for item in object_list.object_list %}
+    <div class="tour-list-item">
+      <div class="tour-list-item-image">
+        <a href="">
+          <img src="{% version item.image 'tour_list' %}" alt="{{ item.title }} title="{{ item.title }}">
+        </a>
+      </div>
+      <div class="tour-list-item-info">
+        <div class="tour-list-item-title">
+          {{ item.title }}
+        </div>
+        <ul class="tour-list-item-data">
+          {% if item.nights %}
+          <li>Ночей: <span>{{ item.nights }}</span></li>
+          <li class="vertical-separator"></li>
+          {% endif %}
+          {% if item.adult_amount %}
+          <li>Взрослых: <span>{{ item.adult_amount }}</span></li>
+          <li class="vertical-separator"></li>
+          {% endif %}
+          {% if item.child_amount %}
+          <li>Детей: <span>{{ item.child_amount }}</span></li>
+          <li class="vertical-separator"></li>
+          {% endif %}
+          {% if item.hotel %}
+          <li>Отель: <span>{{ item.hotel }}</span></li>
+          {% endif %}
+          <div class="clear"></div>
+        </ul>
+        <div class="tour-list-item-description">
+          {{ item.content|default:"" }}
+        </div>
+        <div class="tour-list-info-control">
+          <a tour="{{ item.id }}" href="#" class="send-order">Отправить заявку</a>
+          <div class="tour-list-info-price">{{ item.price|floatformat:2 }}<span>руб.</span></div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+    {% endfor %}
+  </div>
+  
+  {% paginator object_list request %}
+{% endblock %}
+
+{% block bottom_content %}
+  {% include "website/include/bottom_content.html" %}
+{% endblock %}

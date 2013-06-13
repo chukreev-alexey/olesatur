@@ -95,6 +95,7 @@ INSTALLED_APPS = (
     'grappelli.dashboard',
     'grappelli',
     'filebrowser',
+    'pytils',
     
     # Project apps
     'olesatur.core',
@@ -140,8 +141,7 @@ FILEBROWSER_VERSIONS = {
     'partner_list': {'verbose_name': u'Список партнеров', 'width': '', 'height': 38, 'opts': ''},
     'tour_list_bottom_block': {'verbose_name': u'Список туров в нижнеми блоке', 'width': 288, 'height': 288, 'opts': ''},
     'index_banner': {'verbose_name': u'Баннеры на главной', 'width': 960, 'height': '', 'opts': ''},
-        
-
+    'tour_list': {'verbose_name': u'Список туров', 'width': 198, 'height': 198, 'opts': ''},
 }
 GRAPPELLI_ADMIN_TITLE = u'Туристическое агенство "Chrismary"'
 GRAPPELLI_INDEX_DASHBOARD = '%s.dashboard.CustomIndexDashboard' % PROJECT_NAME

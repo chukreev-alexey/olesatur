@@ -27,4 +27,4 @@ pip-log.txt
 olesatur/settings.py
 olesatur/db/*
 olesatur/static/*
-#olesatur/media/uploads/*
+olesatur/media/uploads/*

@@ -1,0 +1,12 @@
+{% if request.ancestors|length > 1 %}
+<ul class="breadcrumbs">
+  {% for item in request.ancestors %}
+    {% if not forloop.last %}
+      <li><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
+      <li>/</li>
+    {% else %}
+      <li><span>{{ item.name }}</span></li>
+    {% endif %}
+  {% endfor %}
+</ul>
+{% endif %}

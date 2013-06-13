@@ -1,0 +1,9 @@
+{% extends "core/base.html" %}
+
+{% block top_content %}
+  {% include "website/include/breadcrumbs.html" %}
+  <h1>{{ request.page.name|default:"Направления" }}</h1>
+  {% include "website/include/direction_list.html" with direction_list=direction_list %}
+  <div class="clear"></div>
+  {{ request.page.content|default:""|safe }}
+{% endblock %}

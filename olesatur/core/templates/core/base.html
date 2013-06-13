@@ -8,8 +8,15 @@
     {% block meta %}{{ request.page.meta|default:""|safe }}{% endblock %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.placeholder.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.inputmask.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/csrf.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/script.js"></script>
   </head>
-  <body>
+  <body style="background: #fff url('{{ request.background_image }}');">
+    {% csrf_token %}
+    {% include "website/include/popup.html" %}
     <div class="wrapper">
       <header>
         <div class="top">
@@ -27,6 +34,8 @@
           <p>{{ request.infoblock.under_logo }}</p>
         </div>
         <ul class="top-menu">
+          <li><a href="/">Главная</a></li>
+          {% if request.top_menu %}<li class="vertical-separator"></li>{% endif %}
           {% for item in request.top_menu %}
             <li><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
             {% if not forloop.last %}<li class="vertical-separator"></li>{% endif %}
@@ -37,7 +46,7 @@
       <section>
         <div class="content-block">
           {% block top_content %}
-            
+            {% include "website/include/breadcrumbs.html" %}
             <h1>{% firstof request.page.name request.page.title %}</h1>
             {{ request.page.content|default:""|safe }}
           {% endblock %}

@@ -56,18 +56,21 @@ admin.site.register(Partner, PartnerAdmin)
 class TourAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {
-            'fields': [('title', 'visible'), 'slug', 'image', 'description'], 'classes': ['wide']
+            'fields': [('title', 'in_bottom_block', 'visible'), 'slug', 'image'], 'classes': ['wide']
         }),
         (u'Информация о туре', {
-            'fields': [('start_date', 'nights'), 'direction', 'hotel', 'price', ('adult_amount', 'child_amount')], 'classes': ['wide']
+            'fields': [('start_date', 'nights'), ('direction', 'hotel'), ('price', 'adult_amount', 'child_amount')], 'classes': ['wide']
+        }),
+        (u'Описание', {
+            'fields': ['description', 'content'], 'classes': ['wide']
         }),
     ]
-    list_display = ('title', 'start_date', 'nights',
+    list_display = ('__unicode__', 'start_date', 'nights',
         'adult_amount', 'direction', 'hotel', 'price', 'in_bottom_block',
         'visible')
     list_editable = ('start_date', 'nights', 'adult_amount', 'hotel',
                      'price', 'in_bottom_block','visible')
     list_filter = ('start_date', 'direction', 'in_bottom_block')
     prepopulated_fields = {'slug': ('title',)}
-    search_fields = ('title', 'description', 'content')
+    search_fields = ('id', 'title', 'description', 'content')
 admin.site.register(Tour, TourAdmin)

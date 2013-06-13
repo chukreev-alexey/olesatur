@@ -1,0 +1,9 @@
+<ul class="country-list">
+  {% for item in direction_list %}
+    <li><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></li>
+    {% if not forloop.last and forloop.counter|divisibleby:direction_count %}
+    </ul>
+    <ul class="country-list">
+    {% endif %}
+  {% endfor %}
+</ul>

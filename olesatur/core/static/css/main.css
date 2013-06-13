@@ -4,7 +4,6 @@
 }
 
 body {
-    background: #fff url("../img/bbb.png");
     font: 14px/22px Arial, Tahoma, Verdana, sans-serif;
     color: #262626;
 }
@@ -46,6 +45,12 @@ h4 {
     margin-bottom: 20px;
 }
 
+input, textarea {
+    color: #000;
+}
+.placeholder {
+    color: #aaa;
+}
 
 .wrapper {
     width: 1000px;
@@ -163,9 +168,13 @@ h4 {
     background: url("../img/horizontal_separator.png");
     height: 2px;
 }
+.index_block_container {
+    min-height: 300px;
+}
 
 .banner-block {
     margin-top: 15px;
+    text-align: center;
 }
 
 .special-offers li {
@@ -327,6 +336,18 @@ footer {
     line-height: 18px;
 }
 
+.popup-close {
+    background: url('../img/close_popup.png') 0 0 no-repeat;
+    float: left;
+    width: 19px;
+    height: 19px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 100;
+}
+
 .send-order {
     display: block;
     background: #f9a810;
@@ -435,6 +456,7 @@ table td {
 }
 
 .popup-shadow {
+    display: none;
     background: url("../img/shadow.png");
     position: fixed;
     left: 0;
@@ -444,13 +466,15 @@ table td {
 }
 
 .popup-outer {
+    display: none;
     position: fixed;
-    left: 50%;
+    /*left: 50%;*/
+    left: 30%;
 }
 
 .popup {
     position: relative;
-    left: -50%;
+    /*left: -50%;*/
     background: #fff;
     padding: 10px;
     -webkit-border-radius: 5px;

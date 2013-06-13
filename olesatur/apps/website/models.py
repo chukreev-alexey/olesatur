@@ -70,9 +70,11 @@ class Tour(TitleSlugModel):
     child_amount = models.IntegerField(u'Детей', default=0)
     hotel = models.CharField(u'Отель', max_length=255, blank=True, null=True)
     price = models.IntegerField(u'Стоимость', default=0)
-    description = models.TextField(u'Описание тура', blank=True,
+    description = models.TextField(u'Краткое описание (в нижнем блоке)', blank=True,
                                    null=True)
-    in_bottom_block = models.BooleanField(u'В нижний блок', default=False)
+    content = models.TextField(u'Полное описание (в списке туров)', blank=True,
+                               null=True)
+    in_bottom_block = models.BooleanField(u'Спецпредложение', default=False)
     visible = models.BooleanField(u'Показывать?', default=False)
     
     allobjects = models.Manager()
@@ -87,7 +89,7 @@ class Tour(TitleSlugModel):
         )
     
     def __unicode__(self):
-        return self.title
+        return u'%s (№%d)' % (self.title, self.id)
     
     class Meta:
         ordering = ('start_date',)

@@ -15,6 +15,10 @@ urlpatterns = patterns('',
 urlpatterns += patterns('',
     url(r'^$', 'olesatur.apps.website.views.index'),
     url(r'^direction/(?P<slug>[\w-]+)/$', 'olesatur.apps.website.views.direction_detail', name="direction_detail"),
+    url(r'^directions/$', 'olesatur.apps.website.views.direction_list', name="direction_list"),
+    url(r'^tours/$', 'olesatur.apps.website.views.tour_list', name="tour_list"),
+    
+    url(r'^order_form/(?P<tour>\d+)/$', 'olesatur.apps.website.views.order_form', name="order_form"),
 )
 
 # Serving media
