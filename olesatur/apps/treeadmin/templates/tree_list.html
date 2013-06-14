@@ -2,7 +2,8 @@
 {% load i18n %}
 
 {% block extrahead %}
-    <script type="application/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <!--<script type="application/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>-->
     <script src="media/js/lib/jquery.cookie.js"></script>
     <script src="media/js/lib/jquery.jstree.js"></script>
     <script>var permissions={{permissions|safe}};var parent_attr='{{parent_attr}}';</script>
