@@ -65,7 +65,6 @@ input, textarea {
 
 .top-logo {
     float: left;
-    padding-top: 15px;
 }
 
 .top-phone {
@@ -74,6 +73,7 @@ input, textarea {
     font-size: 30px;
     width: 280px;
     line-height: 32px;
+    padding-top: 33px;
 }
 
 .top-info {
@@ -201,21 +201,27 @@ input, textarea {
 
 footer {
     padding: 15px 0 15px 0;
+    background-color: #fff;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+    margin-bottom: 20px;
 }
 
-.footer-partners {
-
+footer h3,
+footer .footer-partners {
+    padding: 0 15px;
 }
 
 .footer-partners .left-arrow {
     float: left;
-    margin-right: 40px;
+    margin-right: 25px;
     padding-top: 8px;
 }
 
 .footer-partners .right-arrow {
     float: right;
-    margin-left: 40px;
+    margin-left: 25px;
     padding-top: 8px;
 }
 
@@ -309,7 +315,7 @@ footer {
 
 .tour-list-item-data li {
     display: inline-block;
-    padding: 14px 10px;
+    padding: 9px 10px;
     float: left;
 }
 
@@ -327,7 +333,7 @@ footer {
 .tour-list-item-title {
     color: #000;
     font-weight: bold;
-    font-size: 27px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
@@ -365,7 +371,7 @@ footer {
     float: left;
     color: #096fd7;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 25px;
     padding-top: 10px;
 }
 
@@ -467,16 +473,14 @@ table td {
 
 .popup-outer {
     display: none;
-    position: fixed;
-    /*left: 50%;*/
-    left: 30%;
 }
 
 .popup {
     position: relative;
-    /*left: -50%;*/
     background: #fff;
+    margin: 50px auto 0 auto;
     padding: 10px;
+    width: 470px;
     -webkit-border-radius: 5px;
        -moz-border-radius: 5px;
             border-radius: 5px;
@@ -489,7 +493,8 @@ table td {
        -moz-border-radius: 5px;
             border-radius: 5px;
     padding: 20px 30px;
-    width: 405px;
+    max-height: 700px;
+    overflow: auto;
 }
 
 .popup-title {

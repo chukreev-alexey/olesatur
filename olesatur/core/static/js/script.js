@@ -1,18 +1,18 @@
-$(function(){
-    function init_plugins(){
+$(function() {
+    function init_plugins() {
         //Placeholder
         $('input, textarea').placeholder();
         //Phone mask
         $(".vPhoneField").inputmask({
-            "mask": '+7(999)-999-9999',
+            "mask": '+7(999)-999-9999'
             //'autoUnmask' : true,
             //'clearMaskOnLostFocus': false
         });
     }
     init_plugins();
-    
+
     //Переключение табов на главной странице
-    $("ul.left-menu").on("click", "li:not(.active) > a", function(){
+    $("ul.left-menu").on("click", "li:not(.active) > a", function () {
         var $dst =  $('#index_block_' + $(this).attr('href').substr(1));
         if ($dst) {
             $("div.index_block_container").hide();
@@ -22,14 +22,14 @@ $(function(){
         }
         return false;
     });
-    
+
     //Всплывающее окно заявки
-    function close_popup(){
-        $(".popup-shadow").hide();
+    function close_popup(e) {
         $(".popup-outer").hide();
     }
+
     $(".popup").on('click', ".popup-close", close_popup);
-    $(".popup").on('click', ".button > button", function(){
+    $(".popup").on('click', ".button > button", function () {
         var $form = $(this).closest('form');
         $.ajax({
             url: $form.attr('action'),
@@ -46,8 +46,9 @@ $(function(){
             }
         });
         return false;
-    })
-    $("a.send-order[tour]").click(function(){
+    });
+
+    $("a.send-order[tour]").click(function () {
         var url = "/order_form/" + $(this).attr('tour') + '/';
         $.ajax({
             url: url,
@@ -56,12 +57,14 @@ $(function(){
             $(".popup-inner").html(response);
             init_plugins();
         });
-        $(".popup-shadow").show();
         $(".popup-outer").show();
         return false;
     });
-    $(".popup-shadow").click(function(){
-        close_popup();
+
+    $(".popup-shadow").click(function (e) {
+        if ($(e.target).hasClass("popup-outer")) {
+            close_popup();
+        }
         return false;
     });
 });

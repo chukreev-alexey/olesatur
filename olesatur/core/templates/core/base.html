@@ -14,7 +14,7 @@
     <script type="text/javascript" src="{{ STATIC_URL }}js/csrf.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/script.js"></script>
   </head>
-  <body style="background: #fff url('{{ request.background_image }}');">
+  <body style="background: #fff url('{{ request.background_image }}'); background-size: 100%; background-attachment: fixed;">
     {% csrf_token %}
     {% include "website/include/popup.html" %}
     <div class="wrapper">
@@ -57,7 +57,6 @@
         </div>
       </section>
       <footer>
-        <div class="footer-partners">
           <h3>Партнеры</h3>
           <div class="footer-partners">
             <div class="left-arrow">
@@ -77,13 +76,14 @@
             </div>
             <div class="clear"></div>
           </div>
-        </div>
-        <div class="footer-info">
-          <p>{{ request.infoblock.bottom_address }}</p>
-        </div>
-        <div class="footer-phone">
-          {{ request.infoblock.bottom_phone }}
-        </div>
+
+          <div class="footer-info">
+            <p>{{ request.infoblock.bottom_address }}</p>
+          </div>
+          <div class="footer-phone">
+            {{ request.infoblock.bottom_phone }}
+          </div>
+          <div class="clear"></div>
       </footer>
     </div>
   </body
