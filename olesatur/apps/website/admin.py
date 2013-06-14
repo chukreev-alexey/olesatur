@@ -40,12 +40,12 @@ admin.site.register(Direction, DirectionAdmin)
 class IndexBlockAdmin(admin.ModelAdmin):
     list_display = ('title', 'sort', 'visible')
     list_editable = ('sort', 'visible')
-    class Media:
-        js = [
-            '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
-            '/static/core/tinymce_setup/content.js',
-            '/static/core/tinymce_setup/tinymce_setup.js',
-        ]
+    #class Media:
+    #    js = [
+    #        '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
+    #        '/static/core/tinymce_setup/content.js',
+    #        '/static/core/tinymce_setup/tinymce_setup.js',
+    #    ]
 admin.site.register(IndexBlock, IndexBlockAdmin)
 
 class PartnerAdmin(admin.ModelAdmin):
