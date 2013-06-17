@@ -27,6 +27,9 @@ class PageAdmin(TreeAdmin):
         model = Page
     
     class Media:
+        css = {
+            "all": ('/static/core/tinymce_setup/tiny_styles.css',)
+        }
         js = [
             '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
             '/static/core/tinymce_setup/content.js',
@@ -39,6 +42,9 @@ class InfoBlockAdmin(admin.ModelAdmin):
     list_display = ('title', 'name')
     search_fields = ('title', 'name')
     class Media:
+        css = {
+            "all": ('/static/core/tinymce_setup/tiny_styles.css',)
+        }
         js = [
             '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
             '/static/pages/tinymce_setup/html_content.js',

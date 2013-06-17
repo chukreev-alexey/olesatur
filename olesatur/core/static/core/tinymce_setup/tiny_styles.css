@@ -1,0 +1,16 @@
+.grappelliSkin .mceIcon.mce_justifyleft {
+    background-image: url('img/align-left.png');
+    margin: 3px;
+}
+.grappelliSkin .mceIcon.mce_justifycenter {
+    background-image: url('img/align-center.png');
+    margin: 3px;
+}
+.grappelliSkin .mceIcon.mce_justifyright {
+    background-image: url('img/align-right.png');
+    margin: 3px;
+}
+.grappelliSkin .mceIcon.mce_justifyfull {
+    background-image: url('img/align-justify.png');
+    margin: 3px;
+}
