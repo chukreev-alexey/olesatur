@@ -8,6 +8,7 @@ from django.template.loader import render_to_string
 from django.core.mail import send_mail
 
 from olesatur.core.utils import get_paginator
+from olesatur.apps.pages.models import Page
 
 from .models import IndexBlock, Direction, Tour, Banner
 
@@ -17,6 +18,14 @@ def get_bottom_block_context():
         'direction_count': math.ceil(float(Tour.objects.filter(in_bottom_block=True).count()) / 3),
         'tour_list': Tour.objects.filter(in_bottom_block=True)[:2],
     }
+
+def build_ancestors(obj, url):
+    try:
+        obj_page = get_object_or_404(Page, url=url)
+    except:
+        obj_page = None
+    if obj_page:
+        return list(obj_page.get_ancestors()) + [obj_page, obj]
 
 def index(request):
     try:
@@ -56,10 +65,19 @@ def tour_list(request):
     context.update(get_bottom_block_context())
     return render(request, 'website/tour_list.html', context)
 
+def tour_detail(request, slug):
+    obj = get_object_or_404(Tour, slug=slug)
+    request.ancestors = build_ancestors(obj, 'tours')
+    context = {'object_list': get_paginator(request, [obj], rows_on_page=1)}
+    context.update(get_bottom_block_context())
+    return render(request, 'website/tour_list.html', context)
+
 def direction_detail(request, slug):
     request.page = get_object_or_404(Direction, slug=slug)
-    print request.page
-    return render(request, 'core/base.html')
+    request.ancestors = build_ancestors(request.page, 'directions')
+    context = get_bottom_block_context()
+    return render(request, 'core/base.html', context)
 
 def page(request, path):
-    return render(request, 'core/base.html')
+    context = get_bottom_block_context()
+    return render(request, 'core/base.html', context)

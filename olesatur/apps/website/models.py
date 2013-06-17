@@ -80,6 +80,10 @@ class Tour(TitleSlugModel):
     allobjects = models.Manager()
     objects = TourManager()
     
+    
+    def get_absolute_url(self):
+        return reverse('tour_detail', kwargs={'slug': self.slug})
+    
     def get_text(self):
         return u'%s %s на %d %s' % (
             self.hotel or '',

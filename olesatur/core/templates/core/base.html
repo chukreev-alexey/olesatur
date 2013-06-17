@@ -51,10 +51,9 @@
             {{ request.page.content|default:""|safe }}
           {% endblock %}
         </div>
-        <div class="content-block">
           {% block bottom_content %}
+            {% include "website/include/bottom_content.html" %}
           {% endblock %}
-        </div>
       </section>
       <footer>
           <h3>Партнеры</h3>

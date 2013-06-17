@@ -5,7 +5,7 @@
       <li><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
       <li>/</li>
     {% else %}
-      <li><span>{{ item.name }}</span></li>
+      <li><span>{% firstof item.name item.title %}</span></li>
     {% endif %}
   {% endfor %}
 </ul>

@@ -17,6 +17,7 @@ urlpatterns += patterns('',
     url(r'^direction/(?P<slug>[\w-]+)/$', 'olesatur.apps.website.views.direction_detail', name="direction_detail"),
     url(r'^directions/$', 'olesatur.apps.website.views.direction_list', name="direction_list"),
     url(r'^tours/$', 'olesatur.apps.website.views.tour_list', name="tour_list"),
+    url(r'^tour/(?P<slug>[\w-]+)/$', 'olesatur.apps.website.views.tour_detail', name="tour_detail"),
     
     url(r'^order_form/(?P<tour>\d+)/$', 'olesatur.apps.website.views.order_form', name="order_form"),
 )
