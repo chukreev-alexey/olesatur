@@ -143,6 +143,6 @@ FILEBROWSER_VERSIONS = {
     'index_banner': {'verbose_name': u'Баннеры на главной', 'width': 960, 'height': '', 'opts': ''},
     'tour_list': {'verbose_name': u'Список туров', 'width': 198, 'height': 198, 'opts': ''},
 }
-GRAPPELLI_ADMIN_TITLE = u'Туристическое агенство "Chrismary"'
+GRAPPELLI_ADMIN_TITLE = u'Туристическое агентство "Chrismary"'
 GRAPPELLI_INDEX_DASHBOARD = '%s.dashboard.CustomIndexDashboard' % PROJECT_NAME
 PAGINATOR_PER_PAGE = 20
