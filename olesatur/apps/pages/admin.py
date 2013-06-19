@@ -2,8 +2,11 @@
 from django import forms
 from django.db import models
 from django.contrib import admin
-from .models import Page, InfoBlock
+from tinymce.widgets import TinyMCE
+
 from olesatur.apps.treeadmin import TreeAdmin
+from .models import Page, InfoBlock
+
 
 class PageAdmin(TreeAdmin):
     fieldsets = [
@@ -25,22 +28,25 @@ class PageAdmin(TreeAdmin):
 
     class Meta:
         model = Page
-    
-    class Media:
-        css = {
-            "all": ('/static/core/tinymce_setup/tiny_styles.css',)
-        }
-        js = [
-            '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
-            '/static/core/tinymce_setup/content.js',
-            '/static/core/tinymce_setup/tinymce_setup.js',
-        ]
+        
+    """
+    #class Media:
+    #    css = {
+    #        "all": ('/static/core/tinymce_setup/tiny_styles.css',)
+    #    }
+    #    js = [
+    #        '/static/grappelli/tinymce/jscripts/tiny_mce/tiny_mce.js',
+    #        '/static/core/tinymce_setup/content.js',
+    #        '/static/core/tinymce_setup/tinymce_setup.js',
+    #    ]
+    """
 admin.site.register(Page, PageAdmin)
 
 class InfoBlockAdmin(admin.ModelAdmin):
     actions = None
     list_display = ('title', 'name')
     search_fields = ('title', 'name')
+    """
     class Media:
         css = {
             "all": ('/static/core/tinymce_setup/tiny_styles.css',)
@@ -50,4 +56,5 @@ class InfoBlockAdmin(admin.ModelAdmin):
             '/static/pages/tinymce_setup/html_content.js',
             '/static/core/tinymce_setup/tinymce_setup.js',
         ]
+    """
 admin.site.register(InfoBlock, InfoBlockAdmin)

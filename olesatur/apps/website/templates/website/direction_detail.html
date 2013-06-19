@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+
+{% block top_content %}
+  {% include "website/include/breadcrumbs.html" %}
+  <h1>{{ object_detail.title }}</h1>
+  {{ object_detail.content|default:""|safe }}
+  
+  {% with object_detail.tours.all|slice:"0:5" as direction_tour_list %}{% if direction_tour_list %}
+  <br />
+  <h2>Туры по направлению</h2>
+  <div class="tour-list">
+    {% for item in direction_tour_list %}
+      {% include "website/include/tour_detail.html" with item=item %}
+    {% endfor %}
+  </div>
+  {% endif %}{% endwith %}
+{% endblock %}

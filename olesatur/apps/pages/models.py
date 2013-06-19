@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save, post_delete
 
 from filebrowser.fields import FileBrowseField
+from tinymce.models import HTMLField
 from mptt.models import MPTTModel
 
 class InfoBlock(models.Model):
@@ -20,7 +21,7 @@ class InfoBlock(models.Model):
         help_text=u'request.infoblock.<<Имя по по латински>>')
     content = models.TextField(u'Содержимое блока текст', blank=True, null=True,
         help_text=u'''Содержимое блока берется сначала из текстового поля, но если оно пустое, то из HTML''')
-    html_content = models.TextField(u'Содержимое блока HTML', blank=True, null=True)
+    html_content = HTMLField(u'Содержимое блока HTML', blank=True, null=True)
             
     def __unicode__(self):
         return self.title
@@ -58,7 +59,7 @@ class Page(MPTTModel):
             Примеры:<br />1) /about => http://mysite.ru/about/
             <br />2) contacts (является дочерней страницей страницы about) =>
             http://mysite.ru/about/contacts ''', blank=True, default=u'')
-    content = models.TextField(u'Содержимое страницы', blank=True, null=True)
+    content = HTMLField(u'Содержимое страницы', blank=True, null=True)
     bgimage = FileBrowseField(u'Фоновая картинка', format='image', max_length=200,
                             directory='bg/', blank=True, null=True)
     parent = models.ForeignKey('self', null=True, blank=True,

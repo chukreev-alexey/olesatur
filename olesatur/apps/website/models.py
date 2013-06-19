@@ -10,6 +10,7 @@ from django.dispatch import receiver
 
 
 from filebrowser.fields import FileBrowseField
+from tinymce.models import HTMLField
 
 from olesatur.core.models import (BaseSettings, BaseModelWithVisible,
                                   TitleSlugModel)
@@ -40,7 +41,7 @@ class IndexBlock(BaseModelWithVisible):
 class Direction(TitleSlugModel, BaseModelWithVisible):
     seo_title = models.CharField(u'Заголовок (title)', max_length=255, blank=True)
     seo_meta = models.TextField(u'Мета дескрипторы (meta)', blank=True, null=True)
-    content = models.TextField(u'Содержимое', blank=True, null=True)
+    content = HTMLField(u'Содержимое', blank=True, null=True)
     
     def __unicode__(self):
         return self.title
@@ -61,7 +62,7 @@ class TourManager(models.Manager):
 
 class Tour(TitleSlugModel):
     direction = models.ForeignKey(Direction, verbose_name=u'Направление',
-                                  blank=True, null=True)
+        related_name="tours", blank=True, null=True)
     image = FileBrowseField(u'Картинка', format='image', max_length=200,
                             directory="tours/", blank=True, null=True)
     start_date = models.DateField(u'Дата заезда', default=datetime.date.today)

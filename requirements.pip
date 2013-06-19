@@ -3,5 +3,6 @@ pytils
 south
 django-mptt
 django-grappelli
+django-tinymce
 django-filebrowser
 PIL

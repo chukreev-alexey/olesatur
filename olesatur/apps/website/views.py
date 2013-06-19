@@ -15,7 +15,7 @@ from .models import IndexBlock, Direction, Tour, Banner
 def get_bottom_block_context():
     return {
         'direction_list': Direction.objects.all(),
-        'direction_count': math.ceil(float(Tour.objects.filter(in_bottom_block=True).count()) / 3),
+        'direction_count': math.ceil(float(Direction.objects.all().count()) / 3),
         'tour_list': Tour.objects.filter(in_bottom_block=True)[:2],
     }
 
@@ -73,10 +73,11 @@ def tour_detail(request, slug):
     return render(request, 'website/tour_list.html', context)
 
 def direction_detail(request, slug):
-    request.page = get_object_or_404(Direction, slug=slug)
-    request.ancestors = build_ancestors(request.page, 'directions')
+    object_detail = get_object_or_404(Direction, slug=slug)
+    request.ancestors = build_ancestors(object_detail, 'directions')
     context = get_bottom_block_context()
-    return render(request, 'core/base.html', context)
+    context.update({'object_detail': object_detail})
+    return render(request, 'website/direction_detail.html', context)
 
 def page(request, path):
     context = get_bottom_block_context()

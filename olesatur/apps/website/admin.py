@@ -29,6 +29,7 @@ class DirectionAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('title', 'content')
     
+    """
     class Media:
         css = {
             "all": ('/static/core/tinymce_setup/tiny_styles.css',)
@@ -38,6 +39,7 @@ class DirectionAdmin(admin.ModelAdmin):
             '/static/core/tinymce_setup/content.js',
             '/static/core/tinymce_setup/tinymce_setup.js',
         ]
+    """
 admin.site.register(Direction, DirectionAdmin)
 
 class IndexBlockAdmin(admin.ModelAdmin):
