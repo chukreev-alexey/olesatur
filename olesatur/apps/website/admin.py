@@ -4,13 +4,15 @@ from .models import (Banner, BgImage, Direction, IndexBlock, Partner, Settings,
                      Tour)
 
 class BannerAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image')
-    list_editable = ('image',)
+    list_display = ('title', 'image', 'visible')
+    list_editable = ('image', 'visible')
+    list_filter = ('visible', )
 admin.site.register(Banner, BannerAdmin)
 
 class BgImageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'image')
-    list_editable = ('image', )
+    list_display = ('title', 'image', 'visible')
+    list_editable = ('image', 'visible')
+    list_filter = ('visible', )
 admin.site.register(BgImage, BgImageAdmin)
 
 admin.site.register(Settings)

@@ -120,7 +120,7 @@ class Partner(BaseModelWithVisible):
         verbose_name_plural = u'партнеры'
         
 
-class Banner(models.Model):
+class Banner(BaseModelWithVisible):
     title = models.CharField(u'Название', max_length=255)
     image = FileBrowseField(u'Картинка', format='image', max_length=200,
                             directory="banners/")
@@ -136,7 +136,7 @@ class Banner(models.Model):
         verbose_name = u'баннер'
         verbose_name_plural = u'баннеры на главной странице'
 
-class BgImage(models.Model):
+class BgImage(BaseModelWithVisible):
     title = models.CharField(u'Название', max_length=255)
     image = FileBrowseField(u'Картинка', format='image', max_length=200,
                             directory='backgrounds/')
