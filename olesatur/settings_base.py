@@ -18,7 +18,7 @@ ALLOWED_HOSTS = ['*']
 # RBD Settings
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', 
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(PROJECT_ROOT, 'db', '%s.sqlite' % PROJECT_NAME),
         'USER': '',
         'PASSWORD': '',
@@ -89,7 +89,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     # 3-rd party apps
     'south',
     'grappelli.dashboard',
@@ -97,7 +97,7 @@ INSTALLED_APPS = (
     'filebrowser',
     'tinymce',
     'pytils',
-    
+
     # Project apps
     'olesatur.core',
     'olesatur.apps.pages',
@@ -138,11 +138,12 @@ FILEBROWSER_VERSIONS = {
     'medium': {'verbose_name': 'Medium (4col )', 'width': 300, 'height': '', 'opts': ''},
     'big': {'verbose_name': 'Big (6 col)', 'width': 460, 'height': '', 'opts': ''},
     'large': {'verbose_name': 'Large (8 col)', 'width': 680, 'height': '', 'opts': ''},
-    
+
     'partner_list': {'verbose_name': u'Список партнеров', 'width': '', 'height': 38, 'opts': ''},
-    'tour_list_bottom_block': {'verbose_name': u'Список туров в нижнеми блоке', 'width': 288, 'height': 288, 'opts': ''},
+    'tour_list_bottom_block': {'verbose_name': u'Список туров в нижнеми блоке', 'width': 180, 'height': 180, 'opts': ''},
     'index_banner': {'verbose_name': u'Баннеры на главной', 'width': 960, 'height': '', 'opts': ''},
     'tour_list': {'verbose_name': u'Список туров', 'width': 198, 'height': 198, 'opts': ''},
+    'slider': {'verbose_name': u'Слайдер', 'width': 350, 'height': 163, 'opts': ''},
 }
 GRAPPELLI_ADMIN_TITLE = u'Туристическое агентство "Chrismary"'
 GRAPPELLI_INDEX_DASHBOARD = '%s.dashboard.CustomIndexDashboard' % PROJECT_NAME

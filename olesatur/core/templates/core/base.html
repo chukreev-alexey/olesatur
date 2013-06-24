@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/main.css">
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.jcarousel.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.placeholder.min.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/jquery.inputmask.js"></script>
     <script type="text/javascript" src="{{ STATIC_URL }}js/csrf.js"></script>
@@ -20,18 +21,37 @@
     <div class="wrapper">
       <header>
         <div class="top">
-          <div class="top-logo">
-            <a href="/">
-              <img src="{{ STATIC_URL }}img/logo.png" alt="">
+          <div class="top-left">
+            <a href="/" class="logo">
+              <img src="{{ STATIC_URL }}img/logo_top.png" alt="">
             </a>
           </div>
-          <div class="top-phone">
-            {{ request.infoblock.top_phone }}
+          <div class="top-middle">
+            <div class="top-slider">
+              <div class="top-slider-list">
+                <div class="top-slider-item">
+                  <img src="{% version tour_list.0.image "slider" %}" alt="tour_list.0.title" title="tour_list.0.title" width="350" height="163">
+                </div>
+              </div>
+              <div class="top-slider-panel">
+                <div class="top-slider-title">Турция 12 000 <span>руб</span></div>
+                <div class="top-slider-info">На двоих 12 дне, вылет: 24.04</div>
+                <a href="#" class="top-slider-left"></a>
+                <a href="#" class="top-slider-right"></a>
+              </div>
+            </div>
+          </div>
+          <div class="top-right">
+            <p class="top-right-text">Телефон</p>
+            <div class="phone">
+              {{ request.infoblock.top_phone }}
+            </div>
+            <p class="top-right-text">
+              Адрес: Россия, г.Екатеринбург, ул.Мельковская 12а оф. 701
+              Email: Tour@tour.ru
+            </p>
           </div>
           <div class="clear"></div>
-        </div>
-        <div class="top-info">
-          <p>{{ request.infoblock.under_logo }}</p>
         </div>
         <ul class="top-menu">
           <li><a href="/">Главная</a></li>
@@ -56,26 +76,6 @@
           {% endblock %}
       </section>
       <footer>
-          <h3>Партнеры</h3>
-          <div class="footer-partners">
-            <div class="left-arrow">
-              <a href="#"><img src="{{ STATIC_URL }}img/left.png" /></a>
-            </div>
-            <ul class="partner-list">
-              {% for item in request.partner_list %}
-                <li>
-                  {% if item.href %}<a target="_blank" href="{{ item.href }}">{% endif %}
-                  <img src="{% version item.image 'partner_list' %}" title="{{ item.title }}" alt="{{ item.title }}">
-                  {% if item.href %}</a>{% endif %}
-                </li>
-              {% endfor %}
-            </ul>
-            <div class="right-arrow">
-              <a href="#"><img src="{{ STATIC_URL }}img/right.png" /></a>
-            </div>
-            <div class="clear"></div>
-          </div>
-
           <div class="footer-info">
             <p>{{ request.infoblock.bottom_address }}</p>
           </div>

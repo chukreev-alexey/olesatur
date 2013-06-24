@@ -1,29 +1,26 @@
 {% load fb_versions %}
 <div class="content-block">
-  <div class="left-content">
-    <h3>Спец предложения</h3>
-    <ul class="special-offers">
-      {% for item in tour_list %}
-      <li>
-        <div class="special-image">
-          <a tour="{{ item.id }}" href="{{ item.get_absolute_url }}">
-            <img src="{% version item.image 'tour_list_bottom_block' %}" alt="{{ item.title }}">
-          </a>
-        </div>
-        <div class="special-title">
-          <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
-        </div>
-        <div class="special-description">
-          <p>{{ item.description }}<br />{{ item.price }} руб.</p>
-        </div>
-      </li>
+  <h3>Все направления</h3>
+  {% include "website/include/direction_list.html" with direction_list=direction_list %}
+  <div class="clear"></div>
+
+  <h3>Партнеры</h3>
+  <div class="footer-partners">
+    <div class="left-arrow">
+      <a href="#"><img src="{{ STATIC_URL }}img/left.png" /></a>
+    </div>
+    <ul class="partner-list">
+      {% for item in request.partner_list %}
+        <li>
+          {% if item.href %}<a target="_blank" href="{{ item.href }}">{% endif %}
+          <img src="{% version item.image 'partner_list' %}" title="{{ item.title }}" alt="{{ item.title }}">
+          {% if item.href %}</a>{% endif %}
+        </li>
       {% endfor %}
     </ul>
-  </div>
-  <div class="right-content">
-    <h3>Все направления</h3>
-    {% include "website/include/direction_list.html" with direction_list=direction_list %}
+    <div class="right-arrow">
+      <a href="#"><img src="{{ STATIC_URL }}img/right.png" /></a>
+    </div>
     <div class="clear"></div>
   </div>
-  <div class="clear"></div>
 </div>

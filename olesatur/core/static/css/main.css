@@ -48,6 +48,7 @@ h4 {
 input, textarea {
     color: #000;
 }
+
 .placeholder {
     color: #aaa;
 }
@@ -58,22 +59,96 @@ input, textarea {
 }
 
 .top {
-    margin-top: 20px;
-    padding: 20px 30px;
-    background: url("../img/top_bg.png");
+    margin: 20px 0;
 }
 
-.top-logo {
+.top-left,
+.top-middle,
+.top-right {
+    border: 1px solid #6ca0ec;
+}
+
+.top-left {
     float: left;
+    background: url("../img/top_bg.png");
+    padding: 10px 40px;
+    margin-right: 10px;
 }
 
-.top-phone {
+.top-middle {
+    float: left;
+    width: 348px;
+}
+
+.top-slider {
+    position: relative;
+    width: 350px;
+    height: 163px;
+}
+
+.top-slider-panel {
+    position: absolute;
+    bottom: 0;
+    background: url("../img/slider_bg.png");
+    height: 65px;
+    width: 100%;
+    text-align: center;
+}
+
+.top-slider-title {
+    color: #ffcf52;
+    font-size: 26px;
+    line-height: 35px;
+}
+
+.top-slider-title span {
+    font-size: 19px;
+}
+
+.top-slider-info {
+    color: #dedfde;
+}
+
+.top-slider-left {
+    position: absolute;
+    background: url("../img/slider_left.png") no-repeat;
+    padding-top: 15px;
+    padding-left: 10px;
+    top: 25px;
+    left: 5px;
+}
+
+.top-slider-right {
+    position: absolute;
+    background: url("../img/slider_right.png") no-repeat;
+    padding-top: 15px;
+    padding-left: 10px;
+    top: 25px;
+    right: 5px;
+}
+
+.top-slider-item {
+    width: 350px;
+    height: 163px;
+}
+
+.top-right {
+    background: url("../img/top_bg.png");
     float: right;
-    color: #135c85;
+    color: #fff;
+    padding: 10px;
+    width: 293px;
+    margin-left: 10px;
+}
+
+.top-right .phone {
     font-size: 30px;
-    width: 280px;
     line-height: 32px;
-    padding-top: 33px;
+}
+
+.top-right-text {
+    font-size: 13px;
+    line-height: 20px;
 }
 
 .top-info {
@@ -178,16 +253,46 @@ input, textarea {
 }
 
 .special-offers li {
+    float: left;
+    width: 20%;
     margin-bottom: 20px;
+}
+
+.special-offers li > * {
+    padding: 0 6px;
+}
+
+.special-image {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 15px;
+}
+
+.special-title {
+    height: 25px;
+    overflow: hidden;
 }
 
 .special-title a {
     color: #0d65a8;
     font-weight: bold;
+    font-size: 21px;
+}
+
+.special-info {
+    font-weight: bold;
+}
+
+.special-description {
+    font-size: 12px;
+    line-height: 17px;
+    color: #757575;
 }
 
 .country-list {
     float: left;
+    width: 25%;
+    margin-bottom: 50px;
 }
 
 .country-list li a {
@@ -232,7 +337,7 @@ footer .footer-partners {
 .footer-partners .partner-list li {
     vertical-align: middle;
     display: table-cell;
-    padding-right: 30px;
+    padding-right: 28px;
 }
 
 .footer-info {
