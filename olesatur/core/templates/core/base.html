@@ -31,25 +31,11 @@
             <div class="top-slider">
               <div class="top-slider-list flexslider">
                 <ul class="slides">
-                  {% comment %}
                   {% for item in tour_list %}
-                    <li data-title="{{ item.title }}" data-price="{{ item.price }}" data-desciption="{{ item.description }}">
+                    <li class="top-slider-item" data-direction="{{ item.direction }}" data-price="{{ item.price }}" data-nights="{{ item.nights }}" data-start="{{ item.start_date|date:"d.m" }}" data-count="{{ item.adult_amount }}">
                       <img src="{% version item.image "slider" %}" alt="item.title" title="item.title" />
                     </li>
                   {% endfor %}
-                  {% endcomment %}
-                  <li data-title="Турция" data-price="12 000" data-desciption="На двоих 12 дне, вылет: 24.04">
-                    <img src="{% version tour_list.0.image "slider" %}" alt="На двоих 12 дне, вылет: 24.04" title="На двоих 12 дне, вылет: 24.04" width="350" height="163">
-                  </li>
-                  <li data-title="Египет" data-price="80 000" data-desciption="На двоих 11 дне, вылет: 24.04">
-                    <img src="{% version tour_list.0.image "slider" %}" alt="На двоих 12 дне, вылет: 24.04" title="На двоих 12 дне, вылет: 24.04" width="350" height="163">
-                  </li>
-                  <li data-title="Казахстан" data-price="31 000" data-desciption="На двоих 112 дне, вылет: 24.04">
-                    <img src="{% version tour_list.0.image "slider" %}" alt="На двоих 12 дне, вылет: 24.04" title="На двоих 12 дне, вылет: 24.04" width="350" height="163">
-                  </li>
-                  <li data-title="Чечня" data-price="120 000" data-desciption="На двоих 365 дне, вылет: 31.12">
-                    <img src="{% version tour_list.0.image "slider" %}" alt="На двоих 12 дне, вылет: 24.04" title="На двоих 12 дне, вылет: 24.04" width="350" height="163">
-                  </li>
                 </ul>
               </div>
               <div class="top-slider-panel">

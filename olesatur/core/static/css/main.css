@@ -91,6 +91,10 @@ input, textarea {
     margin-right: 0 !important;
 }
 
+.flexslider .slides img {
+    width: auto !important;
+}
+
 .top-slider-panel {
     position: absolute;
     bottom: 0;
@@ -275,7 +279,7 @@ input, textarea {
 }
 
 .special-title {
-    height: 25px;
+    height: 50px;
     overflow: hidden;
 }
 

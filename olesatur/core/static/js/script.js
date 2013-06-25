@@ -16,12 +16,30 @@ $(function() {
             useCSS: false,
             video: true,
             after: function (slider) {
-                var title = $(slider.slides[slider.currentSlide]).data("title"),
+                var direction = $(slider.slides[slider.currentSlide]).data("direction"),
                     price = $(slider.slides[slider.currentSlide]).data("price"),
-                    description = $(slider.slides[slider.currentSlide]).data("description");
+                    nights = $(slider.slides[slider.currentSlide]).data("nights"),
+                    start = $(slider.slides[slider.currentSlide]).data("start"),
+                    count = $(slider.slides[slider.currentSlide]).data("count");
 
-                $(".top-slider-title").html(title + " " + price + " <span>руб</span>");
-                $(".top-slider-info").text(description);
+                console.log(count);
+
+                var get_text_count = function (count) {
+                    var map = {
+                        1: "На одного",
+                        2: "На двоих",
+                        3: "На троих",
+                        4: "На четверых",
+                        5: "На пятерых"
+                    };
+                    if (count in map) {
+                        return map[count];
+                    }
+                    return "На " + count;
+                };
+
+                $(".top-slider-title").html(direction + " " + price + " <span>руб</span>");
+                $(".top-slider-info").text(get_text_count(count) + ", " + nights + " ночей, " + "вылет " + start);
             }
          });
 

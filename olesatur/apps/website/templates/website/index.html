@@ -30,14 +30,11 @@
         </a>
       </div>
       <div class="special-title">
-        <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
+        <a href="{{ item.get_absolute_url }}">{{ item.direction }} {{ item.price }} руб.</a>
       </div>
-      <div class="special-info">
-        На двоих. 27 000 руб.
-      </div>
+      <div class="special-info">{{ item.start_date|date:"d.m.Y" }}</div>
       <div class="special-description">
-        Краткое описание тура, возможно перечисления городов и отелей.
-        {# <p>{{ item.description }}<br />{{ item.price }} руб.</p> #}
+        {{ item.description }}
       </div>
     </li>
     {% if forloop.counter|divisibleby:"5" %}<div class="clear"></div></ul><ul class="special-offers">{% endif %}
