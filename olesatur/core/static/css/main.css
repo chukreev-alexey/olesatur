@@ -86,6 +86,11 @@ input, textarea {
     height: 163px;
 }
 
+.flexslider {
+    border: none !important;
+    margin-right: 0 !important;
+}
+
 .top-slider-panel {
     position: absolute;
     bottom: 0;

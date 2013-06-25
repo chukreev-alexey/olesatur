@@ -23,32 +23,33 @@ class Settings(BaseSettings):
 @receiver(post_delete, sender=Settings)
 def clear_settings_cache(sender, **kwargs):
     cache.delete('settings')
-    
+
 
 class IndexBlock(BaseModelWithVisible):
     title = models.CharField(u'Название', max_length=255)
     content = models.TextField(u'Содержимое', blank=True, null=True)
     sort = models.IntegerField(u'Порядок', default=0)
-    
+
     def __unicode__(self):
         return self.title
-    
+
     class Meta:
         ordering = ('sort', )
         verbose_name = u'блок'
         verbose_name_plural = u'блоки на главной странице'
 
+
 class Direction(TitleSlugModel, BaseModelWithVisible):
     seo_title = models.CharField(u'Заголовок (title)', max_length=255, blank=True)
     seo_meta = models.TextField(u'Мета дескрипторы (meta)', blank=True, null=True)
     content = HTMLField(u'Содержимое', blank=True, null=True)
-    
+
     def __unicode__(self):
         return self.title
-    
+
     def get_absolute_url(self):
         return reverse('direction_detail', kwargs={'slug': self.slug})
-    
+
     class Meta:
         ordering = ('title', )
         verbose_name = u'направление'
@@ -59,6 +60,7 @@ class TourManager(models.Manager):
     def get_query_set(self):
         return super(TourManager, self).get_query_set().\
             filter(start_date__gte=datetime.date.today(), visible=True)
+
 
 class Tour(TitleSlugModel):
     direction = models.ForeignKey(Direction, verbose_name=u'Направление',
@@ -77,14 +79,13 @@ class Tour(TitleSlugModel):
                                null=True)
     in_bottom_block = models.BooleanField(u'Спецпредложение', default=False)
     visible = models.BooleanField(u'Показывать?', default=False)
-    
+
     allobjects = models.Manager()
     objects = TourManager()
-    
-    
+
     def get_absolute_url(self):
         return reverse('tour_detail', kwargs={'slug': self.slug})
-    
+
     def get_text(self):
         return u'%s %s на %d %s' % (
             self.hotel or '',
@@ -92,10 +93,10 @@ class Tour(TitleSlugModel):
             self.nights,
             pytils.numeral.choose_plural(self.nights, (u"ночь", u"ночи", u"ночей"))
         )
-    
+
     def __unicode__(self):
         return u'%s (№%d)' % (self.title, self.id)
-    
+
     class Meta:
         ordering = ('start_date',)
         verbose_name = u'тур'
@@ -110,15 +111,15 @@ class Partner(BaseModelWithVisible):
         help_text=u'''Если ссылка указана, то картинка партнера становится
         кликабельной. Указывать в формате http://somesite.ru/page_adreess''')
     sort = models.IntegerField(u'Порядок', default=0)
-    
+
     def __unicode__(self):
         return self.title
-    
+
     class Meta:
         ordering = ('sort', 'title')
         verbose_name = u'партнер'
         verbose_name_plural = u'партнеры'
-        
+
 
 class Banner(BaseModelWithVisible):
     title = models.CharField(u'Название', max_length=255)
@@ -127,22 +128,24 @@ class Banner(BaseModelWithVisible):
     href = models.URLField(u'Ссылка', blank=True, null=True, help_text=u'''Если
         ссылка указана, то баннер становится кликабельным. Указывать в формате
         http://somesite.ru/page_adreess/page.html''')
-    
+
     def __unicode__(self):
         return self.title
-    
+
     class Meta:
         ordering = ('title', )
         verbose_name = u'баннер'
         verbose_name_plural = u'баннеры на главной странице'
 
+
 class BgImage(BaseModelWithVisible):
     title = models.CharField(u'Название', max_length=255)
     image = FileBrowseField(u'Картинка', format='image', max_length=200,
                             directory='backgrounds/')
+
     def __unicode__(self):
         return self.title
-    
+
     class Meta:
         ordering = ('title', )
         verbose_name = u'картинка'

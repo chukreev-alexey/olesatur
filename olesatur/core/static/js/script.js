@@ -8,6 +8,30 @@ $(function() {
             //'autoUnmask' : true,
             //'clearMaskOnLostFocus': false
         });
+        var flexslider = $('.flexslider').flexslider({
+            animation: "slide",
+            slideshowSpeed: 5000,
+            animationSpeed: 1200,
+            controlNav: false,
+            useCSS: false,
+            video: true,
+            after: function (slider) {
+                var title = $(slider.slides[slider.currentSlide]).data("title"),
+                    price = $(slider.slides[slider.currentSlide]).data("price"),
+                    description = $(slider.slides[slider.currentSlide]).data("description");
+
+                $(".top-slider-title").html(title + " " + price + " <span>руб</span>");
+                $(".top-slider-info").text(description);
+            }
+         });
+
+        $(".top-slider-left").on("click", function () {
+            flexslider.flexslider("prev");
+        });
+
+        $(".top-slider-right").on("click", function () {
+            flexslider.flexslider("next");
+        });
     }
     init_plugins();
 
