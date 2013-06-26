@@ -1,4 +1,30 @@
 $(function() {
+
+    var update_slider_text = function (slider) {
+        var direction = $(slider.slides[slider.currentSlide]).data("direction"),
+            price = $(slider.slides[slider.currentSlide]).data("price"),
+            nights = $(slider.slides[slider.currentSlide]).data("nights"),
+            start = $(slider.slides[slider.currentSlide]).data("start"),
+            count = $(slider.slides[slider.currentSlide]).data("count");
+
+        var get_text_count = function (count) {
+            var map = {
+                1: "На одного",
+                2: "На двоих",
+                3: "На троих",
+                4: "На четверых",
+                5: "На пятерых"
+            };
+            if (count in map) {
+                return map[count];
+            }
+            return "На " + count;
+        };
+
+        $(".top-slider-title").html(direction + " " + price + " <span>руб</span>");
+        $(".top-slider-info").text(get_text_count(count) + ", " + nights + " ночей, " + "вылет " + start);
+    }
+
     function init_plugins() {
         //Placeholder
         $('input, textarea').placeholder();
@@ -15,31 +41,11 @@ $(function() {
             controlNav: false,
             useCSS: false,
             video: true,
+            start: function (slider) {
+                update_slider_text(slider);
+            },
             after: function (slider) {
-                var direction = $(slider.slides[slider.currentSlide]).data("direction"),
-                    price = $(slider.slides[slider.currentSlide]).data("price"),
-                    nights = $(slider.slides[slider.currentSlide]).data("nights"),
-                    start = $(slider.slides[slider.currentSlide]).data("start"),
-                    count = $(slider.slides[slider.currentSlide]).data("count");
-
-                console.log(count);
-
-                var get_text_count = function (count) {
-                    var map = {
-                        1: "На одного",
-                        2: "На двоих",
-                        3: "На троих",
-                        4: "На четверых",
-                        5: "На пятерых"
-                    };
-                    if (count in map) {
-                        return map[count];
-                    }
-                    return "На " + count;
-                };
-
-                $(".top-slider-title").html(direction + " " + price + " <span>руб</span>");
-                $(".top-slider-info").text(get_text_count(count) + ", " + nights + " ночей, " + "вылет " + start);
+                update_slider_text(slider);
             }
          });
 

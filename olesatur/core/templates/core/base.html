@@ -33,18 +33,14 @@
                 <ul class="slides">
                   {% for item in tour_list %}
                     <li class="top-slider-item" data-direction="{{ item.direction }}" data-price="{{ item.price }}" data-nights="{{ item.nights }}" data-start="{{ item.start_date|date:"d.m" }}" data-count="{{ item.adult_amount }}">
-                      <img src="{% version item.image "slider" %}" alt="item.title" title="item.title" />
+                      <img src="{% version item.image "slider" %}" alt="{{ item.title }}" title="{{ item.title }}" />
                     </li>
                   {% endfor %}
                 </ul>
               </div>
               <div class="top-slider-panel">
-                {% comment %}
-                <div class="top-slider-title">{{ tour_list.0.title }} {{ tour_list.0.price }} <span>руб</span></div>
-                <div class="top-slider-info">{{ tour_list.0.description }}</div>
-                {% endcomment %}
-                <div class="top-slider-title">Турция 12 000 <span>руб</span></div>
-                <div class="top-slider-info">На двоих 12 дне, вылет: 24.04</div>
+                <div class="top-slider-title"></div>
+                <div class="top-slider-info"></div>
                 <a href="#" class="top-slider-left"></a>
                 <a href="#" class="top-slider-right"></a>
               </div>

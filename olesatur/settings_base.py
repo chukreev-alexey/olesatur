@@ -143,7 +143,7 @@ FILEBROWSER_VERSIONS = {
     'tour_list_bottom_block': {'verbose_name': u'Список туров в нижнеми блоке', 'width': 180, 'height': 180, 'opts': ''},
     'index_banner': {'verbose_name': u'Баннеры на главной', 'width': 960, 'height': '', 'opts': ''},
     'tour_list': {'verbose_name': u'Список туров', 'width': 198, 'height': 198, 'opts': ''},
-    'slider': {'verbose_name': u'Слайдер', 'width': 350, 'height': 163, 'opts': ''},
+    'slider': {'verbose_name': u'Слайдер', 'width': 350, 'height': 163, 'opts': 'crop'},
 }
 GRAPPELLI_ADMIN_TITLE = u'Туристическое агентство "Chrismary"'
 GRAPPELLI_INDEX_DASHBOARD = '%s.dashboard.CustomIndexDashboard' % PROJECT_NAME
