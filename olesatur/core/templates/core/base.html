@@ -29,6 +29,7 @@
           </div>
           <div class="top-middle">
             <div class="top-slider">
+              {% if request.tour_slider %}
               <div class="top-slider-list flexslider">
                 <ul class="slides">
                   {% for item in request.tour_slider %}
@@ -44,6 +45,7 @@
                 <a href="#" class="top-slider-left"></a>
                 <a href="#" class="top-slider-right"></a>
               </div>
+              {% endif %}
             </div>
           </div>
           <div class="top-right">
