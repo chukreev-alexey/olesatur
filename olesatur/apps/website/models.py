@@ -77,7 +77,9 @@ class Tour(TitleSlugModel):
                                    null=True)
     content = models.TextField(u'Полное описание (в списке туров)', blank=True,
                                null=True)
-    in_bottom_block = models.BooleanField(u'Спецпредложение', default=False)
+    
+    in_bottom_block = models.BooleanField(u'Туры на главную', default=False)
+    in_slider = models.BooleanField(u'Туры в слайдер', default=False)
     visible = models.BooleanField(u'Показывать?', default=False)
 
     allobjects = models.Manager()

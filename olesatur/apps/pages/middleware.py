@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 
 from olesatur.core.utils import mptt_as_dict
-from olesatur.apps.website.models import Partner, BgImage, Settings
+from olesatur.apps.website.models import Partner, BgImage, Settings, Tour
 from .models import Page, InfoBlock
 
 
@@ -56,6 +56,8 @@ class PageMiddleware(object):
         
         request.top_menu = Page.objects.filter(level=1)
         request.partner_list = Partner.objects.all()[:20]
+        request.tour_slider = Tour.objects.filter(in_slider=True)[:3]
+        
         
         try:
             request.page = Page.objects.get(path=path)

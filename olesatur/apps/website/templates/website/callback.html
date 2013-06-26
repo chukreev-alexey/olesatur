@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+
+{% block top_content %}
+  <h1>Заказ обратного звонка</h1>
+  <div class="clear"></div>
+  {% if messages %}
+    <div style="color: green; font-weight: bold; margin-top: 30px; margin-bottom: 30px;">
+    {% for message in  messages %}
+      <p>{{ message }}</p>
+    {% endfor %}
+    </div>
+  {% else %}
+    <form method="POST" action="{% url 'callback' %}" style="width: 400px;">
+      {% csrf_token %}
+      <ul class="form_list">
+        <li {% if form.name.errors %}class="error"{% endif %}>
+          <div class="form_field">{{ form.name }}</div>
+          {% for error in form.name.errors %}
+            <div class="form_error">{{ error }}</div>
+          {% empty %}
+            <div class="form_error"></div>
+          {% endfor %}
+        </li>
+        <li {% if form.phone.errors %}class="error"{% endif %}>
+          <div class="form_field">{{ form.phone }}</div>
+          {% for error in form.phone.errors %}
+            <div class="form_error">{{ error }}</div>
+          {% empty %}
+            <div class="form_error"></div>
+          {% endfor %}
+        </li>
+      </ul>
+      <div class="button"><button>Отправить</button></div>
+    </form>
+  {% endif %}
+{% endblock %}

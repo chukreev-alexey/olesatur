@@ -57,7 +57,7 @@ admin.site.register(Partner, PartnerAdmin)
 class TourAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {
-            'fields': [('title', 'in_bottom_block', 'visible'), 'slug', 'image'], 'classes': ['wide']
+            'fields': [('title', 'in_slider', 'in_bottom_block', 'visible'), 'slug', 'image'], 'classes': ['wide']
         }),
         (u'Информация о туре', {
             'fields': [('start_date', 'nights'), ('direction', 'hotel'), ('price', 'adult_amount', 'child_amount')], 'classes': ['wide']
@@ -67,10 +67,10 @@ class TourAdmin(admin.ModelAdmin):
         }),
     ]
     list_display = ('__unicode__', 'start_date', 'nights',
-        'adult_amount', 'direction', 'hotel', 'price', 'in_bottom_block',
+        'adult_amount', 'direction', 'hotel', 'price', 'in_slider', 'in_bottom_block',
         'visible')
     list_editable = ('start_date', 'nights', 'adult_amount', 'hotel',
-                     'price', 'in_bottom_block','visible')
+                     'price', 'in_slider', 'in_bottom_block','visible')
     list_filter = ('start_date', 'direction', 'in_bottom_block')
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ('id', 'title', 'description', 'content')

@@ -3,9 +3,11 @@ import json
 import math
 
 from django.http import HttpResponse 
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+from django.contrib import messages
 
 from olesatur.core.utils import get_paginator
 from olesatur.apps.pages.models import Page
@@ -16,7 +18,6 @@ def get_bottom_block_context():
     return {
         'direction_list': Direction.objects.all(),
         'direction_count': math.ceil(float(Direction.objects.all().count()) / 3),
-        'tour_list': Tour.objects.filter(in_bottom_block=True)[:2],
     }
 
 def build_ancestors(obj, url):
@@ -34,7 +35,8 @@ def index(request):
         banner = None
     context = {
         'block_list': IndexBlock.objects.all(),
-        'banner': banner
+        'banner': banner,
+        'tour_list': Tour.objects.filter(in_bottom_block=True)[:5],
     }
     context.update(get_bottom_block_context())
     return render(request, 'website/index.html', context)
@@ -55,6 +57,22 @@ def order_form(request, tour):
                   email_context.get('email') or recipients[0], recipients)
         return HttpResponse('success')
     return render(request, 'website/include/order_form.html', {'form': form, 'tour': tour})
+
+def callback(request):
+    from .forms import CallbackForm
+    from olesatur.core.fields import emails_list
+    form = CallbackForm(request.POST or None)
+    if form.is_valid():
+        subject = u'Заказ звонка с сайта'
+        recipients = []
+        recipients.extend(emails_list(request.settings.emails))
+        email_context = form.cleaned_data
+        email_content = render_to_string('website/emails/callback_email.txt', email_context)
+        send_mail(subject, email_content,
+                  email_context.get('email') or recipients[0], recipients)
+        messages.add_message(request, messages.SUCCESS, u"Наши менеджеры обязательно вам перезвонят в ближайшее время.")
+        return redirect(reverse('callback'))
+    return render(request, 'website/callback.html', {'form': form})
 
 def direction_list(request):
     context = get_bottom_block_context()

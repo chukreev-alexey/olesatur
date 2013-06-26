@@ -31,7 +31,7 @@
             <div class="top-slider">
               <div class="top-slider-list flexslider">
                 <ul class="slides">
-                  {% for item in tour_list %}
+                  {% for item in request.tour_slider %}
                     <li class="top-slider-item" data-direction="{{ item.direction }}" data-price="{{ item.price }}" data-nights="{{ item.nights }}" data-start="{{ item.start_date|date:"d.m" }}" data-count="{{ item.adult_amount }}" data-href="{{ item.get_absolute_url }}">
                       <img src="{% version item.image "slider" %}" alt="{{ item.title }}" title="{{ item.title }}" />
                     </li>
@@ -53,6 +53,9 @@
             </div>
             <p class="top-right-text">
               {{ request.infoblock.top_address }}
+            </p>
+            <p class="top-right-text">
+              <a class="callback" href="{% url "callback" %}">Перезвоните мне</a>
             </p>
           </div>
           <div class="clear"></div>
