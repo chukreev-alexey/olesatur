@@ -32,7 +32,7 @@
               <div class="top-slider-list flexslider">
                 <ul class="slides">
                   {% for item in tour_list %}
-                    <li class="top-slider-item" data-direction="{{ item.direction }}" data-price="{{ item.price }}" data-nights="{{ item.nights }}" data-start="{{ item.start_date|date:"d.m" }}" data-count="{{ item.adult_amount }}">
+                    <li class="top-slider-item" data-direction="{{ item.direction }}" data-price="{{ item.price }}" data-nights="{{ item.nights }}" data-start="{{ item.start_date|date:"d.m" }}" data-count="{{ item.adult_amount }}" data-href="{{ item.get_absolute_url }}">
                       <img src="{% version item.image "slider" %}" alt="{{ item.title }}" title="{{ item.title }}" />
                     </li>
                   {% endfor %}
@@ -62,7 +62,7 @@
           {% if request.top_menu %}<li class="vertical-separator"></li>{% endif %}
           {% for item in request.top_menu %}
             <li><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
-            {% if not forloop.last %}<li class="vertical-separator"></li>{% endif %}
+            <li class="vertical-separator"></li>
           {% endfor %}
         </ul>
         <div class="clear"></div>

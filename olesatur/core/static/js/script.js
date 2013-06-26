@@ -5,7 +5,8 @@ $(function() {
             price = $(slider.slides[slider.currentSlide]).data("price"),
             nights = $(slider.slides[slider.currentSlide]).data("nights"),
             start = $(slider.slides[slider.currentSlide]).data("start"),
-            count = $(slider.slides[slider.currentSlide]).data("count");
+            count = $(slider.slides[slider.currentSlide]).data("count"),
+            href = $(slider.slides[slider.currentSlide]).data("href");
 
         var get_text_count = function (count) {
             var map = {
@@ -21,9 +22,9 @@ $(function() {
             return "На " + count;
         };
 
-        $(".top-slider-title").html(direction + " " + price + " <span>руб</span>");
+        $(".top-slider-title").html("<a href='" + href + "'>" + direction + " " + price + " <span>руб</span></a>");
         $(".top-slider-info").text(get_text_count(count) + ", " + nights + " ночей, " + "вылет " + start);
-    }
+    };
 
     function init_plugins() {
         //Placeholder
@@ -51,10 +52,12 @@ $(function() {
 
         $(".top-slider-left").on("click", function () {
             flexslider.flexslider("prev");
+            return false;
         });
 
         $(".top-slider-right").on("click", function () {
             flexslider.flexslider("next");
+            return false;
         });
     }
     init_plugins();
