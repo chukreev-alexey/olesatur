@@ -56,7 +56,7 @@ class PageMiddleware(object):
         
         request.top_menu = Page.objects.filter(level=1)
         request.partner_list = Partner.objects.all()[:20]
-        request.tour_slider = Tour.objects.filter(in_slider=True)[:3]
+        request.tour_slider = Tour.objects.filter(in_slider=True)[:5]
         
         
         try:

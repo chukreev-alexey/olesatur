@@ -49,14 +49,16 @@
             </div>
           </div>
           <div class="top-right">
-            <p class="top-right-text">Телефон</p>
-            <div class="phone">
-              {{ request.infoblock.top_phone|default:""|safe }}
+            <div class="top-right-top">
+              <p class="top-right-text">Телефон</p>
+              <div class="phone">
+                {{ request.infoblock.top_phone|default:""|safe }}
+              </div>
+              <p class="top-right-text">
+                {{ request.infoblock.top_address|default:""|safe }}
+              </p>
             </div>
-            <p class="top-right-text">
-              {{ request.infoblock.top_address|default:""|safe }}
-            </p>
-            <p class="top-right-text" style="margin-top: 3px;">
+            <p class="top-right-text callback_right" style="margin-top: 3px;">
               <a class="callback" href="{% url "callback" %}">Перезвоните мне</a>
             </p>
           </div>
