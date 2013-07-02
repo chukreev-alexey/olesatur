@@ -51,10 +51,10 @@
           <div class="top-right">
             <p class="top-right-text">Телефон</p>
             <div class="phone">
-              {{ request.infoblock.top_phone }}
+              {{ request.infoblock.top_phone|default:""|safe }}
             </div>
             <p class="top-right-text">
-              {{ request.infoblock.top_address }}
+              {{ request.infoblock.top_address|default:""|safe }}
             </p>
             <p class="top-right-text" style="margin-top: 3px;">
               <a class="callback" href="{% url "callback" %}">Перезвоните мне</a>
