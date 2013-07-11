@@ -78,8 +78,9 @@ class Tour(TitleSlugModel):
     content = models.TextField(u'Полное описание (в списке туров)', blank=True,
                                null=True)
     
-    in_bottom_block = models.BooleanField(u'Туры на главную', default=False)
-    in_slider = models.BooleanField(u'Туры в слайдер', default=False)
+    in_bottom_block = models.BooleanField(u'На главную', default=False)
+    in_slider = models.BooleanField(u'В слайдер', default=False)
+    sort = models.IntegerField(u'Порядок', default=0)
     visible = models.BooleanField(u'Показывать?', default=False)
 
     allobjects = models.Manager()
@@ -100,7 +101,7 @@ class Tour(TitleSlugModel):
         return u'%s (№%d)' % (self.title, self.id)
 
     class Meta:
-        ordering = ('start_date',)
+        ordering = ('-sort',)
         verbose_name = u'тур'
         verbose_name_plural = u'туры'
 
